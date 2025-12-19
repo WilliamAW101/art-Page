@@ -14,9 +14,9 @@ export default function RootLayout({
             <div className="headingFont flex gap-6 ml-auto pt-2">
               <Link href="/"><h2 className="font-bold hover:opacity-40 transition">Home</h2></Link>
               <Link href="/gallery"><h2 className="font-bold hover:opacity-40 transition">Gallery</h2></Link>
-              <Link href="/"><h2 className="font-bold hover:opacity-40 transition">Animations</h2></Link>
-              <Link href="/"><h2 className="font-bold hover:opacity-40 transition">About</h2></Link>
-              <Link href="/"><h2 className="font-bold hover:opacity-40 transition">Contact</h2></Link>
+              <Link href="/animations"><h2 className="font-bold hover:opacity-40 transition">Animations</h2></Link>
+              <Link href="/about"><h2 className="font-bold hover:opacity-40 transition">About</h2></Link>
+              <Link href="/contact"><h2 className="font-bold hover:opacity-40 transition">Contact</h2></Link>
             </div>
           </header>
         

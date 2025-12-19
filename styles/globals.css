@@ -35,6 +35,10 @@ html {
   font-family: var(--font-family-kawaii);
 }
 
+.bodyFont {
+  font-family: var(--font-family-body);
+}
+
 .skillBox {
   background-color: black;
   border-radius: 1rem;
@@ -56,6 +60,10 @@ html {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.pictureBackground .img {
+  filter: brightness(0.92) contrast(0.95)
 }
 .imageDescription {
   color: white;

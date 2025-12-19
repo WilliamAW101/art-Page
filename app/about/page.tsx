@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
-import GalleryClient from './galleryPageClient';
+import AboutClient from './aboutPageClient';
 
 export const metadata: Metadata = {
-  title: 'Gallary',
-  description: 'Welcome to the gallary of my art.',
+  title: 'About Me',
+  description: 'Who am I?',
   icons: {
     icon: '/testArt.webp',
   },
 };
 
 export default function AboutPage() {
-  return <GalleryClient />
+  return <AboutClient />
 }
