@@ -1,4 +1,4 @@
-module github.com/yourusername/artpage-backend
+module github.com/Angelo/artpage-backend
 
 go 1.22.2
 
