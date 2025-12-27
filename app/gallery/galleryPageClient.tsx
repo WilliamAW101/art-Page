@@ -1,4 +1,5 @@
 'use client';
+import { useScrollAnimation } from '../../hooks/scrollAnimation';
 
 export default function AboutPage() {
   const galleryItems = [
@@ -16,6 +17,8 @@ export default function AboutPage() {
     { src: "/hotdog.webp", alt: "Artistic representation of hotdog", description: "Some Description" },
   ];
 
+  const gallery = useScrollAnimation({ threshold: 0.1, triggerOnce: true });
+
   return (
     <main>
         <div className='topMain'>
@@ -23,12 +26,14 @@ export default function AboutPage() {
               Welcome to my Gallery Page
             </h1>
         </div>
-        <div className="gap-6 grid grid-cols-4">
+        <div
+          ref={gallery.ref} 
+          className="gap-6 grid grid-cols-4">
           {galleryItems.map((item, index) => (
             <div 
               key={index}
-              className="pictureBackground animate-fade-inY p-10"
-              style={{animationDelay: `${index * 0.15}s`}}
+              className={`pictureBackground p-10 transition-opacity duration-1000 ${gallery.isVisible ? 'opacity-100' : 'opacity-0'}`}
+              style={{transitionDelay: `${index * 150}ms`}}
             >
               <img 
                 src={item.src}
