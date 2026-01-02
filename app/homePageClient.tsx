@@ -1,8 +1,13 @@
 'use client';
 import { useScrollAnimation } from '../hooks/scrollAnimation';
 import Link from 'next/link'
+import { Artwork } from '../hooks/api';
 
-export default function Home() {
+interface Props {
+  featuredArtworks: Artwork[];
+}
+
+export default function Home({ featuredArtworks }: Props) {
   const title = useScrollAnimation();
   const works = useScrollAnimation();
   const skills = useScrollAnimation();
@@ -43,32 +48,32 @@ export default function Home() {
           className={`gap-6 grid grid-cols-3 animate-fade-inY ${works.isVisible ? "opacity-100" : "opacity-0"} transition-opacity duration-1000`}>
           <div className="pictureBackground">
             <img 
-              src="/testArt.png" 
-              alt="Artistic representation of hotdog" 
+              src={featuredArtworks[0].image_url}
+              alt={featuredArtworks[0].alt_text}
               className="mx-auto rounded-lg shadow-lg"
             />
             <p className="imageDescription">
-              Some Description
+              {featuredArtworks[0].description}
             </p>
           </div>
           <div className="pictureBackground">
             <img 
-              src="/testArt.webp" 
-              alt="Artistic representation of hotdog" 
+              src={featuredArtworks[1].image_url}
+              alt={featuredArtworks[1].alt_text}
               className="mx-auto rounded-lg shadow-lg"
             />
             <p className="imageDescription">
-              Some Description
+              {featuredArtworks[1].description}
             </p>
           </div>
           <div className="pictureBackground">
             <img 
-              src="/hotdog.webp" 
-              alt="Artistic representation of hotdog" 
+              src={featuredArtworks[2].image_url}
+              alt={featuredArtworks[2].alt_text}
               className="mx-auto rounded-lg shadow-lg"
             />
             <p className="imageDescription">
-              Some Description
+              {featuredArtworks[2].description}
             </p>
           </div>
         </div>

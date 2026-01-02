@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import HomeClient from './homePageClient';
+import { GetFeaturedArtworks } from '../hooks/api';
 
 export const metadata: Metadata = {
   title: 'Home | Artpage',
@@ -9,6 +10,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
-  return <HomeClient />;
+export default async function HomePage() {
+
+  const featuredArtworks = await GetFeaturedArtworks();
+
+  // console.log("Featured Artworks:", featuredArtworks);
+
+  return <HomeClient featuredArtworks={featuredArtworks}/>;
 }

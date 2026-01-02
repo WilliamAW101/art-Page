@@ -4,21 +4,27 @@ import (
 	"database/sql"
 	"fmt"
 
-	_ "github.com/lib/pq" // PostgreSQL driver
+	_ "github.com/lib/pq"
 )
 
-// Connect establishes a connection to the PostgreSQL database
-func Connect(host, port, user, password, dbname string) (*sql.DB, error) {
-	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
-	db, err := sql.Open("postgres", psqlInfo)
+// Connect creates a database connection pool
+func Connect(host, port, user, pass, dbname string) (*sql.DB, error) {
+	connStr := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s", host, port, user, pass, dbname)
+
+	// Open connection pool
+	db, err := sql.Open("postgres", connStr)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to open database: %w", err)
 	}
 
-	err = db.Ping()
-	if err != nil {
-		return nil, err
+	// Test the connection
+	if err := db.Ping(); err != nil {
+		return nil, fmt.Errorf("failed to ping database: %w", err)
 	}
+
+	// Configure connection pool (optional but recommended)
+	db.SetMaxOpenConns(25) // Max 25 connections
+	db.SetMaxIdleConns(5)  // Keep 5 idle connections
 
 	return db, nil
 }
